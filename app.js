@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const scoreDisplay = document.querySelector("#score");
 	const gameOverDisplay = document.querySelector("#gameOver");
 	const startBtn = document.querySelector("#start");
+	const startAgain = document.querySelector("#startAgain");
 	let timerId;
 	let score = 0;
 	const colors = ["violet", "green", "blue", "yellow", "cyan"];
@@ -205,22 +206,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	}
 
-	//start/pause
-
-	startBtn.addEventListener("click", () => {
-		if (timerId) {
-			clearInterval(timerId);
-			timerId = null;
-			gameOverDisplay.innerHTML = "GAME PAUSED";
-		} else {
-			draw();
-			timerId = setInterval(moveDown, 200);
-			nextRandom = Math.floor(Math.random() * theTetrominoes.length);
-			displayShape();
-			gameOverDisplay.innerHTML = "GAME STARTED";
-		}
-	});
-
 	//add score
 
 	function addScore() {
@@ -265,5 +250,26 @@ document.addEventListener("DOMContentLoaded", () => {
 			clearInterval(timerId);
 		}
 	}
+
+	//start/pause
+
+	startBtn.addEventListener("click", () => {
+		if (timerId) {
+			clearInterval(timerId);
+			timerId = null;
+			gameOverDisplay.innerHTML = "GAME PAUSED";
+		} else {
+			draw();
+			timerId = setInterval(moveDown, 200);
+			nextRandom = Math.floor(Math.random() * theTetrominoes.length);
+			displayShape();
+			gameOverDisplay.innerHTML = "GAME STARTED";
+		}
+	});
+
+	startAgain.addEventListener("click", () => {
+		window.location.reload();
+	});
+
 	//END
 });

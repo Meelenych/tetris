@@ -1,9 +1,24 @@
+body{
+    font-family: Roboto, serif;
+}
+
+button{
+    font-family: inherit;
+    font-size: 25px;
+    border:none;
+    background-color: rgb(192, 47, 211);
+    border-radius: 3px;
+    margin: 30px;
+    box-shadow: 3px 4px 2px 1px rgba(0, 0, 255, .2);
+}
+
 .container{
     display: flex;
   
 }
 
 .grid {
+    box-shadow: 3px 4px 2px 1px rgba(0, 0, 255, .2);
     width: 200px;
     height: 400px;
     background-color: rgb(95, 211, 143);
@@ -20,11 +35,11 @@
 
 .tetromino{
     background-color:blueviolet;
-    outline: 1px solid black;
+    outline: 1px solid rgb(109, 106, 106);
 }
 
-
 .mini-grid{
+    box-shadow: 3px 4px 2px 1px rgba(0, 0, 255, .2);
     margin-left: 30px;
     width: 80px;
     height: 80px;
