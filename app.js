@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const startAgain = document.querySelector("#startAgain");
 	let timerId;
 	let score = 0;
-	const colors = ["violet", "green", "blue", "yellow", "cyan"];
+	const colors = ["violet", "green", "blue", "blueviolet", "cyan"];
 
 	//The tetrominos
 
@@ -108,9 +108,9 @@ document.addEventListener("DOMContentLoaded", () => {
 			nextRandom = Math.floor(Math.random() * theTetrominoes.length);
 			current = theTetrominoes[random][currentRotation];
 			currentPosition = 4;
+			addScore();
 			draw();
 			displayShape();
-			addScore();
 			gameOver();
 		}
 	}

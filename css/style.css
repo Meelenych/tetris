@@ -18,10 +18,17 @@ button{
 }
 
 .grid {
-    box-shadow: 3px 4px 2px 1px rgba(0, 0, 255, .2);
+    box-shadow: 3px 4px 2px 1px rgba(153, 153, 248, 0.2);
     width: 200px;
     height: 400px;
-    background-color: rgb(95, 211, 143);
+    
+
+background-image: linear-gradient(
+    to bottom,
+    rgb(121, 235, 27),
+    rgb(233, 85, 17)
+  );
+
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -34,8 +41,9 @@ button{
 }
 
 .tetromino{
-    background-color:blueviolet;
-    outline: 1px solid rgb(109, 106, 106);
+    border-radius: 3px;
+   box-shadow: 3px 3px 1px rgba(211, 210, 210, 0.5) inset,
+    -3px -3px 1px rgba(49, 49, 49, 0.5) inset;
 }
 
 .mini-grid{
