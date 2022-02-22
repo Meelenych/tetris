@@ -67,9 +67,6 @@ select {
   font: inherit;
 }
 
-
-
-
 body{
     font-family: Roboto, serif;
     font-size: 12px;
@@ -103,9 +100,6 @@ body{
     margin-right: 20px;
 }
 
-#gameOver{
-
-}
 button{
     font-family: inherit;
     font-size: 20px;
@@ -115,6 +109,11 @@ button{
     border-radius: 3px;
     box-shadow: 3px 4px 2px 1px rgba(0, 0, 255, .2);
     outline: none;
+}
+
+button:active {
+    transform: scale(0.9);
+    box-shadow: none;
 }
 
 #start{
