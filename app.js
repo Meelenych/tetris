@@ -335,5 +335,13 @@ document.addEventListener("DOMContentLoaded", () => {
 		window.location.reload();
 	});
 
+	//colorize display
+
+	let color = 0;
+	setInterval(() => {
+		color = color + (1 % 360);
+		gameOverDisplay.style.color = "hsl(" + color + ", 100%, 50%)";
+	}, 50);
+
 	//END
 });

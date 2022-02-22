@@ -86,7 +86,7 @@ body{
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 96vh;
+    height: 100vh;
 
     display: flex;
     flex-direction: column;
@@ -101,6 +101,10 @@ body{
 }
 .scoreLvlDsp{
     margin-right: 20px;
+}
+
+#gameOver{
+
 }
 button{
     font-family: inherit;
