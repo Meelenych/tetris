@@ -19,6 +19,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	const levelDisplay = document.getElementById("levelDisplay");
 	let level = 0;
 
+	//=================TOUCH CTRLS==================
+
+	const leftBtn = document.getElementById("leftBtn");
+	const rotateBtn = document.getElementById("rotateBtn");
+	const rightBtn = document.getElementById("rightBtn");
+	const downBtn = document.getElementById("downBtn");
+
 	//========================SOUNDS==========================
 	const ambient = document.getElementById("ambient");
 	const over = document.getElementById("over");
@@ -129,18 +136,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	//assign functions to keyCodes
 	document.addEventListener("keyup", control);
+	document.addEventListener("click", control);
 
 	function control(e) {
-		if (e.keyCode === 37) {
+		if (e.keyCode === 37 || e.target === leftBtn) {
 			moveLeft();
-		} else if (e.keyCode === 38) {
+		} else if (e.keyCode === 38 || e.target === rotateBtn) {
 			rotate();
-		} else if (e.keyCode === 39) {
+		} else if (e.keyCode === 39 || e.target === rightBtn) {
 			moveRight();
-		} else if (e.keyCode === 40) {
+		} else if (e.keyCode === 40 || e.target === downBtn) {
 			moveDown();
 		}
 	}
+
+	document.addEventListener("touchstart", rotate());
+	document.addEventListener("swiped-right", moveRight());
+	document.addEventListener("swiped-left", moveLeft());
+	document.addEventListener("swiped-down", moveDown());
 
 	//left border for theTetrominoes and moveLeft
 
