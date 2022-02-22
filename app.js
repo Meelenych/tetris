@@ -9,8 +9,20 @@ document.addEventListener("DOMContentLoaded", () => {
 	const startAgain = document.querySelector("#startAgain");
 	let timerId;
 	let score = 0;
-	const colors = ["violet", "green", "blue", "blueviolet", "cyan"];
+	const colors = [
+		"Orchid",
+		"OrangeRed",
+		"RoyalBlue",
+		"SandyBrown",
+		"LightSalmon",
+	];
+	const levelDisplay = document.getElementById("levelDisplay");
+	let level = 0;
 
+	//========================SOUNDS==========================
+	const ambient = document.getElementById("ambient");
+	const over = document.getElementById("over");
+	const levelUp = document.getElementById("levelUp");
 	//The tetrominos
 
 	const lTetromino = [
@@ -226,6 +238,41 @@ document.addEventListener("DOMContentLoaded", () => {
 			if (row.every((index) => squares[index].classList.contains("taken"))) {
 				score += 10;
 				scoreDisplay.innerHTML = score;
+
+				//=====================LEVELS=================================
+
+				if (score === 10) {
+					clearInterval(timerId);
+					levelUp.play();
+					timerId = setInterval(moveDown, 900);
+					levelDisplay.innerHTML = level += 1;
+				}
+				if (score === 20) {
+					clearInterval(timerId);
+					levelUp.play();
+					timerId = setInterval(moveDown, 800);
+					levelDisplay.innerHTML = level += 1;
+				}
+				if (score === 30) {
+					clearInterval(timerId);
+					levelUp.play();
+					timerId = setInterval(moveDown, 700);
+					levelDisplay.innerHTML = level += 1;
+				}
+				if (score === 40) {
+					clearInterval(timerId);
+					levelUp.play();
+					timerId = setInterval(moveDown, 600);
+					levelDisplay.innerHTML = level += 1;
+				}
+				if (score === 50) {
+					clearInterval(timerId);
+					levelUp.play();
+					timerId = setInterval(moveDown, 500);
+					levelDisplay.innerHTML = level += 1;
+				}
+				//=====================LEVELS END=================================
+
 				row.forEach((index) => {
 					squares[index].classList.remove("taken");
 					squares[index].classList.remove("tetromino");
@@ -248,6 +295,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		) {
 			gameOverDisplay.innerHTML = "GAME OVER";
 			clearInterval(timerId);
+			ambient.pause();
+			over.play();
 		}
 	}
 
@@ -258,12 +307,14 @@ document.addEventListener("DOMContentLoaded", () => {
 			clearInterval(timerId);
 			timerId = null;
 			gameOverDisplay.innerHTML = "GAME PAUSED";
+			ambient.pause();
 		} else {
 			draw();
-			timerId = setInterval(moveDown, 200);
+			timerId = setInterval(moveDown, 1000);
 			nextRandom = Math.floor(Math.random() * theTetrominoes.length);
 			displayShape();
 			gameOverDisplay.innerHTML = "GAME STARTED";
+			ambient.play();
 		}
 	});
 
