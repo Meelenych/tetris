@@ -14,11 +14,23 @@
 	<body>
 		<div class="mainContainer">
 			<h1>Karazhan tetris</h1>
-			<h2 id="gameOver"></h2>
-			<h3>SCORE: <span id="score">0</span></h3>
-
-			<button id="start">Start/Pause</button>
-			<button id="startAgain">Start again</button>
+			<h2 id="gameOver">INSERT COIN!</h2>
+			<div class="displays">
+				<div class="scoreLvlDsp">
+					<h3>SCORE: <span id="score">0</span></h3>
+					<h3>LEVEL: <span id="levelDisplay">0</span></h3>
+				</div>
+				<div class="scoreTable">
+					<h3>HI SCORE</h3>
+					<ul class="hiScore">
+						<li class="hiScoreLine">100</li>
+					</ul>
+				</div>
+			</div>
+			<div class="startPauseBtns">
+				<button id="start">Start/Pause</button>
+				<button id="startAgain">Start again</button>
+			</div>
 			<div class="container">
 				<div class="grid">
 					<div></div>
@@ -253,23 +265,14 @@
 					<div></div>
 					<div></div>
 				</div>
-
-				<div class="level">
-					<h3>LEVEL: <span id="levelDisplay">0</span></h3>
-				</div>
-
-				<div class="scoreTable">
-					<h3>HI SCORE</h3>
-					<ul class="hiScore">
-						<li class="hiScoreLine">100</li>
-					</ul>
-				</div>
 			</div>
 
 			<div class="touchControls">
-				<button type="button" id="leftBtn"><</button>
-				<button type="button" id="rotateBtn">O</button>
-				<button type="button" id="rightBtn">></button>
+				<button type="button" id="rotateBtn">o</button>
+				<div class="lrBtns">
+					<button type="button" id="leftBtn"><</button>
+					<button type="button" id="rightBtn">></button>
+				</div>
 				<button type="button" id="downBtn">|</button>
 			</div>
 
