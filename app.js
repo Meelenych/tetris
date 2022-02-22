@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		"LightSalmon",
 	];
 	const levelDisplay = document.getElementById("levelDisplay");
+	const hiScoreLine = document.getElementById("hiScoreLine");
+	const tap = document.getElementById("tap");
 	let level = 0;
 
 	//=================TOUCH CTRLS==================
@@ -140,6 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	document.addEventListener("click", control);
 
 	function control(e) {
+		tap.play();
 		if (e.keyCode === 37 || e.target === leftBtn) {
 			moveLeft();
 		} else if (e.keyCode === 38 || e.target === rotateBtn) {
@@ -150,11 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
 			moveDown();
 		}
 	}
-
-	document.addEventListener("touchstart", rotate());
-	document.addEventListener("swiped-right", moveRight());
-	document.addEventListener("swiped-left", moveLeft());
-	document.addEventListener("swiped-down", moveDown());
 
 	//left border for theTetrominoes and moveLeft
 
@@ -315,9 +313,14 @@ document.addEventListener("DOMContentLoaded", () => {
 			clearInterval(timerId);
 			ambient.pause();
 			over.play();
+
+			localStorage.getItem("score") > score
+				? localStorage.setItem("score", localStorage.getItem("score"))
+				: localStorage.setItem("score", score);
+			localStorage.setItem("score", score);
 		}
 	}
-
+	hiScoreLine.innerHTML = localStorage.getItem("score");
 	//start/pause
 
 	startBtn.addEventListener("click", () => {
