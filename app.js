@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const ambient = document.getElementById("ambient");
 	const over = document.getElementById("over");
 	const levelUp = document.getElementById("levelUp");
+	const lineFill = document.getElementById("lineFill");
 	//The tetrominos
 
 	const lTetromino = [
@@ -252,33 +253,37 @@ document.addEventListener("DOMContentLoaded", () => {
 				score += 10;
 				scoreDisplay.innerHTML = score;
 
+				if ((score += 10)) {
+					lineFill.play();
+				}
+
 				//=====================LEVELS=================================
 
-				if (score === 10) {
+				if (score === 100) {
 					clearInterval(timerId);
 					levelUp.play();
 					timerId = setInterval(moveDown, 900);
 					levelDisplay.innerHTML = level += 1;
 				}
-				if (score === 20) {
+				if (score === 200) {
 					clearInterval(timerId);
 					levelUp.play();
 					timerId = setInterval(moveDown, 800);
 					levelDisplay.innerHTML = level += 1;
 				}
-				if (score === 30) {
+				if (score === 300) {
 					clearInterval(timerId);
 					levelUp.play();
 					timerId = setInterval(moveDown, 700);
 					levelDisplay.innerHTML = level += 1;
 				}
-				if (score === 40) {
+				if (score === 400) {
 					clearInterval(timerId);
 					levelUp.play();
 					timerId = setInterval(moveDown, 600);
 					levelDisplay.innerHTML = level += 1;
 				}
-				if (score === 50) {
+				if (score === 500) {
 					clearInterval(timerId);
 					levelUp.play();
 					timerId = setInterval(moveDown, 500);
