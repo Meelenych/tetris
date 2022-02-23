@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const levelDisplay = document.getElementById("levelDisplay");
 	const hiScoreLine = document.getElementById("hiScoreLine");
 	const tap = document.getElementById("tap");
+	const mainContainer = document.querySelector(".mainContainer");
 	let level = 0;
 
 	//=================TOUCH CTRLS==================
@@ -386,26 +387,23 @@ document.addEventListener("DOMContentLoaded", () => {
 	}, 50);
 
 	mute.addEventListener("click", () => {
-		if (
-			levelUp.muted === false &&
-			lineFill.muted === false &&
-			tap.muted === false
-		) {
-			levelUp.setAttribute("muted", "true");
-			lineFill.setAttribute("muted", "true");
-			tap.setAttribute("muted", "true");
-			ambient.pause();
-		} else if (
-			levelUp.muted === "true" &&
-			lineFill.muted === "true" &&
-			tap.muted === "true"
-		) {
-			levelUp.setAttribute("muted", "false");
-			lineFill.setAttribute("muted", "false");
-			tap.setAttribute("muted", "false");
-			ambient.play();
+		if (!levelUp.muted) {
+			levelUp.muted = true;
+			lineFill.muted = true;
+			tap.muted = true;
+			ambient.muted = true;
+			mute.textContent = "Muted";
+			mute.style.textDecoration = "line-through";
+			mainContainer.style.backgroundImage = 'url("./images/bg.jpg")';
+		} else {
+			levelUp.muted = false;
+			lineFill.muted = false;
+			tap.muted = false;
+			ambient.muted = false;
+			mute.textContent = "Mute";
+			mute.style.textDecoration = "none";
+			mainContainer.style.backgroundImage = 'url("./images/bg.png")';
 		}
-		console.log("levelUp", levelUp.muted);
 	});
 
 	//END

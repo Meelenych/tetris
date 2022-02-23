@@ -124,6 +124,8 @@ button:active {
 
 #mute{
     margin-left: 20px;
+    width:80px;
+  
 }
 .touchControls {
     margin-top: 10px;
