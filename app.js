@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const gameOverDisplay = document.querySelector("#gameOver");
 	const startBtn = document.querySelector("#start");
 	const startAgain = document.querySelector("#startAgain");
+	const mute = document.querySelector("#mute");
 	let timerId;
 	let score = 0;
 	const colors = [
@@ -33,8 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	const over = document.getElementById("over");
 	const levelUp = document.getElementById("levelUp");
 	const lineFill = document.getElementById("lineFill");
-	//The tetrominos
 
+	//The tetrominos
 	const lTetromino = [
 		[1, width + 1, width * 2 + 1, 2],
 		[width, width + 1, width + 2, width * 2 + 2],
@@ -115,7 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 
 	//freeze
-
 	function freeze() {
 		if (
 			current.some((index) =>
@@ -162,7 +162,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 
 	//left border for theTetrominoes and moveLeft
-
 	function moveLeft() {
 		undraw();
 		const isAtLeftEdge = current.some(
@@ -180,6 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 		draw();
 	}
+
 	//right border for theTetrominoes and moveRight
 	function moveRight() {
 		undraw();
@@ -238,7 +238,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 
 	//add score
-
 	function addScore() {
 		for (let i = 0; i < 199; i += width) {
 			const row = [
@@ -272,43 +271,52 @@ document.addEventListener("DOMContentLoaded", () => {
 				if (score === 100) {
 					levelUpFunc();
 					timerId = setInterval(moveDown, 900);
+					ambient.playbackRate = 1.1;
 				}
 				if (score === 200) {
 					levelUpFunc();
 					timerId = setInterval(moveDown, 800);
+					ambient.playbackRate = 1.2;
 				}
 				if (score === 300) {
 					levelUpFunc();
 					timerId = setInterval(moveDown, 700);
+					ambient.playbackRate = 1.3;
 				}
 				if (score === 400) {
 					levelUpFunc();
 					timerId = setInterval(moveDown, 600);
+					ambient.playbackRate = 1.4;
 				}
 				if (score === 500) {
 					levelUpFunc();
 					timerId = setInterval(moveDown, 500);
+					ambient.playbackRate = 1.5;
 				}
-
 				if (score === 600) {
 					levelUpFunc();
 					timerId = setInterval(moveDown, 400);
+					ambient.playbackRate = 1.6;
 				}
 				if (score === 700) {
 					levelUpFunc();
 					timerId = setInterval(moveDown, 300);
+					ambient.playbackRate = 1.7;
 				}
 				if (score === 800) {
 					levelUpFunc();
 					timerId = setInterval(moveDown, 200);
+					ambient.playbackRate = 1.8;
 				}
 				if (score === 900) {
 					levelUpFunc();
 					timerId = setInterval(moveDown, 100);
+					ambient.playbackRate = 1.9;
 				}
 				if (score === 1000) {
 					levelUpFunc();
 					timerId = setInterval(moveDown, 50);
+					ambient.playbackRate = 2;
 				}
 				//=====================LEVELS END=================================
 
@@ -337,15 +345,18 @@ document.addEventListener("DOMContentLoaded", () => {
 			ambient.pause();
 			over.play();
 
+			//HI SCORE
 			localStorage.getItem("score") > score
 				? localStorage.setItem("score", localStorage.getItem("score"))
 				: localStorage.setItem("score", score);
-			localStorage.setItem("score", score);
 		}
+		setTimeout(() => {
+			over.pause();
+		}, 10000);
 	}
 	hiScoreLine.innerHTML = localStorage.getItem("score");
-	//start/pause
 
+	//start/pause
 	startBtn.addEventListener("click", () => {
 		if (timerId) {
 			clearInterval(timerId);
@@ -373,6 +384,29 @@ document.addEventListener("DOMContentLoaded", () => {
 		color = color + (1 % 360);
 		gameOverDisplay.style.color = "hsl(" + color + ", 100%, 50%)";
 	}, 50);
+
+	mute.addEventListener("click", () => {
+		if (
+			levelUp.muted === false &&
+			lineFill.muted === false &&
+			tap.muted === false
+		) {
+			levelUp.setAttribute("muted", "true");
+			lineFill.setAttribute("muted", "true");
+			tap.setAttribute("muted", "true");
+			ambient.pause();
+		} else if (
+			levelUp.muted === "true" &&
+			lineFill.muted === "true" &&
+			tap.muted === "true"
+		) {
+			levelUp.setAttribute("muted", "false");
+			lineFill.setAttribute("muted", "false");
+			tap.setAttribute("muted", "false");
+			ambient.play();
+		}
+		console.log("levelUp", levelUp.muted);
+	});
 
 	//END
 });
