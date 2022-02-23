@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const startBtn = document.querySelector("#start");
 	const startAgain = document.querySelector("#startAgain");
 	const mute = document.querySelector("#mute");
+	const nextMusic = document.querySelector("#nextMusic");
 	let timerId;
 	let score = 0;
 	const colors = [
@@ -32,6 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	//========================SOUNDS==========================
 	const ambient = document.getElementById("ambient");
+	const ambient2 = document.getElementById("ambient2");
+	const ambient3 = document.getElementById("ambient3");
 	const over = document.getElementById("over");
 	const levelUp = document.getElementById("levelUp");
 	const lineFill = document.getElementById("lineFill");
@@ -238,6 +241,19 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	}
 
+	//ambient
+	const ambientMusic = [ambient, ambient2, ambient3];
+	let ambIdx = 0;
+
+	//next music
+	nextMusic.addEventListener("click", () => {
+		ambientMusic[ambIdx].muted = true;
+		ambIdx = ambIdx + 1;
+		ambientMusic[ambIdx].play();
+
+		console.log("ambIdx", ambIdx);
+	});
+
 	//add score
 	function addScore() {
 		for (let i = 0; i < 199; i += width) {
@@ -272,52 +288,52 @@ document.addEventListener("DOMContentLoaded", () => {
 				if (score === 100) {
 					levelUpFunc();
 					timerId = setInterval(moveDown, 900);
-					ambient.playbackRate = 1.1;
+					ambientMusic[ambIdx].playbackRate = 1.1;
 				}
 				if (score === 200) {
 					levelUpFunc();
 					timerId = setInterval(moveDown, 800);
-					ambient.playbackRate = 1.2;
+					ambientMusic[ambIdx].playbackRate = 1.2;
 				}
 				if (score === 300) {
 					levelUpFunc();
 					timerId = setInterval(moveDown, 700);
-					ambient.playbackRate = 1.3;
+					ambientMusic[ambIdx].playbackRate = 1.3;
 				}
 				if (score === 400) {
 					levelUpFunc();
 					timerId = setInterval(moveDown, 600);
-					ambient.playbackRate = 1.4;
+					ambientMusic[ambIdx].playbackRate = 1.4;
 				}
 				if (score === 500) {
 					levelUpFunc();
 					timerId = setInterval(moveDown, 500);
-					ambient.playbackRate = 1.5;
+					ambientMusic[ambIdx].playbackRate = 1.5;
 				}
 				if (score === 600) {
 					levelUpFunc();
 					timerId = setInterval(moveDown, 400);
-					ambient.playbackRate = 1.6;
+					ambientMusic[ambIdx].playbackRate = 1.6;
 				}
 				if (score === 700) {
 					levelUpFunc();
 					timerId = setInterval(moveDown, 300);
-					ambient.playbackRate = 1.7;
+					ambientMusic[ambIdx].playbackRate = 1.7;
 				}
 				if (score === 800) {
 					levelUpFunc();
 					timerId = setInterval(moveDown, 200);
-					ambient.playbackRate = 1.8;
+					ambientMusic[ambIdx].playbackRate = 1.8;
 				}
 				if (score === 900) {
 					levelUpFunc();
 					timerId = setInterval(moveDown, 100);
-					ambient.playbackRate = 1.9;
+					ambientMusic[ambIdx].playbackRate = 1.9;
 				}
 				if (score === 1000) {
 					levelUpFunc();
 					timerId = setInterval(moveDown, 50);
-					ambient.playbackRate = 2;
+					ambientMusic[ambIdx].playbackRate = 2;
 				}
 				//=====================LEVELS END=================================
 
@@ -334,6 +350,13 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	}
 
+	//colorize display
+	let color = 0;
+	setInterval(() => {
+		color = color + (1 % 360);
+		gameOverDisplay.style.color = "hsl(" + color + ", 100%, 50%)";
+	}, 50);
+
 	//Game over
 	function gameOver() {
 		if (
@@ -343,7 +366,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		) {
 			gameOverDisplay.innerHTML = "GAME OVER";
 			clearInterval(timerId);
-			ambient.pause();
+			ambientMusic[ambIdx].pause();
 			over.play();
 
 			//HI SCORE
@@ -363,14 +386,14 @@ document.addEventListener("DOMContentLoaded", () => {
 			clearInterval(timerId);
 			timerId = null;
 			gameOverDisplay.innerHTML = "GAME PAUSED";
-			ambient.pause();
+			ambientMusic[ambIdx].pause();
 		} else {
 			draw();
 			timerId = setInterval(moveDown, 1000);
 			nextRandom = Math.floor(Math.random() * theTetrominoes.length);
 			displayShape();
 			gameOverDisplay.innerHTML = "GAME STARTED";
-			ambient.play();
+			ambientMusic[ambIdx].play();
 		}
 	});
 
@@ -378,20 +401,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		window.location.reload();
 	});
 
-	//colorize display
-
-	let color = 0;
-	setInterval(() => {
-		color = color + (1 % 360);
-		gameOverDisplay.style.color = "hsl(" + color + ", 100%, 50%)";
-	}, 50);
-
+	//mute
 	mute.addEventListener("click", () => {
 		if (!levelUp.muted) {
 			levelUp.muted = true;
 			lineFill.muted = true;
 			tap.muted = true;
-			ambient.muted = true;
+			ambientMusic[ambIdx].muted = true;
+
 			mute.textContent = "Muted";
 			mute.style.textDecoration = "line-through";
 			mainContainer.style.backgroundImage = 'url("./images/bg.jpg")';
@@ -399,7 +416,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			levelUp.muted = false;
 			lineFill.muted = false;
 			tap.muted = false;
-			ambient.muted = false;
+			ambientMusic[ambIdx].muted = false;
+
 			mute.textContent = "Mute";
 			mute.style.textDecoration = "none";
 			mainContainer.style.backgroundImage = 'url("./images/bg.png")';
