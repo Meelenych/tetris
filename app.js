@@ -140,6 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	//assign functions to keyCodes
 	document.addEventListener("keyup", control);
 	document.addEventListener("click", control);
+	document.addEventListener("keydown", quickDown);
 
 	function control(e) {
 		tap.play();
@@ -150,6 +151,12 @@ document.addEventListener("DOMContentLoaded", () => {
 		} else if (e.keyCode === 39 || e.target === rightBtn) {
 			moveRight();
 		} else if (e.keyCode === 40 || e.target === downBtn) {
+			moveDown();
+		}
+	}
+
+	function quickDown(e) {
+		if (e.keyCode === 40 || e.target === downBtn) {
 			moveDown();
 		}
 	}
@@ -256,36 +263,52 @@ document.addEventListener("DOMContentLoaded", () => {
 				}
 
 				//=====================LEVELS=================================
+				const levelUpFunc = () => {
+					clearInterval(timerId);
+					levelUp.play();
+					levelDisplay.innerHTML = level += 1;
+				};
 
 				if (score === 100) {
-					clearInterval(timerId);
-					levelUp.play();
+					levelUpFunc();
 					timerId = setInterval(moveDown, 900);
-					levelDisplay.innerHTML = level += 1;
 				}
 				if (score === 200) {
-					clearInterval(timerId);
-					levelUp.play();
+					levelUpFunc();
 					timerId = setInterval(moveDown, 800);
-					levelDisplay.innerHTML = level += 1;
 				}
 				if (score === 300) {
-					clearInterval(timerId);
-					levelUp.play();
+					levelUpFunc();
 					timerId = setInterval(moveDown, 700);
-					levelDisplay.innerHTML = level += 1;
 				}
 				if (score === 400) {
-					clearInterval(timerId);
-					levelUp.play();
+					levelUpFunc();
 					timerId = setInterval(moveDown, 600);
-					levelDisplay.innerHTML = level += 1;
 				}
 				if (score === 500) {
-					clearInterval(timerId);
-					levelUp.play();
+					levelUpFunc();
 					timerId = setInterval(moveDown, 500);
-					levelDisplay.innerHTML = level += 1;
+				}
+
+				if (score === 600) {
+					levelUpFunc();
+					timerId = setInterval(moveDown, 400);
+				}
+				if (score === 700) {
+					levelUpFunc();
+					timerId = setInterval(moveDown, 300);
+				}
+				if (score === 800) {
+					levelUpFunc();
+					timerId = setInterval(moveDown, 200);
+				}
+				if (score === 900) {
+					levelUpFunc();
+					timerId = setInterval(moveDown, 100);
+				}
+				if (score === 1000) {
+					levelUpFunc();
+					timerId = setInterval(moveDown, 50);
 				}
 				//=====================LEVELS END=================================
 
