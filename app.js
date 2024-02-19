@@ -1,43 +1,43 @@
-document.addEventListener("DOMContentLoaded", () => {
-	const grid = document.querySelector(".grid");
+document.addEventListener('DOMContentLoaded', () => {
+	const grid = document.querySelector('.grid');
 	const width = 10;
 	let nextRandom = 0;
-	let squares = Array.from(document.querySelectorAll(".grid div"));
-	const scoreDisplay = document.querySelector("#score");
-	const gameOverDisplay = document.querySelector("#gameOver");
-	const startBtn = document.querySelector("#start");
-	const startAgain = document.querySelector("#startAgain");
-	const mute = document.querySelector("#mute");
-	const nextMusic = document.querySelector("#nextMusic");
+	let squares = Array.from(document.querySelectorAll('.grid div'));
+	const scoreDisplay = document.querySelector('#score');
+	const gameOverDisplay = document.querySelector('#gameOver');
+	const startBtn = document.querySelector('#start');
+	const startAgain = document.querySelector('#startAgain');
+	const mute = document.querySelector('#mute');
+	const nextMusic = document.querySelector('#nextMusic');
 	let timerId;
 	let score = 0;
 	const colors = [
-		"Orchid",
-		"OrangeRed",
-		"RoyalBlue",
-		"SandyBrown",
-		"LightSalmon",
+		'Orchid',
+		'OrangeRed',
+		'RoyalBlue',
+		'SandyBrown',
+		'LightSalmon',
 	];
-	const levelDisplay = document.getElementById("levelDisplay");
-	const hiScoreLine = document.getElementById("hiScoreLine");
-	const tap = document.getElementById("tap");
-	const mainContainer = document.querySelector(".mainContainer");
+	const levelDisplay = document.getElementById('levelDisplay');
+	const hiScoreLine = document.getElementById('hiScoreLine');
+	const tap = document.getElementById('tap');
+	const mainContainer = document.querySelector('.mainContainer');
 	let level = 0;
 
 	//=================TOUCH CTRLS==================
 
-	const leftBtn = document.getElementById("leftBtn");
-	const rotateBtn = document.getElementById("rotateBtn");
-	const rightBtn = document.getElementById("rightBtn");
-	const downBtn = document.getElementById("downBtn");
+	const leftBtn = document.getElementById('leftBtn');
+	const rotateBtn = document.getElementById('rotateBtn');
+	const rightBtn = document.getElementById('rightBtn');
+	const downBtn = document.getElementById('downBtn');
 
 	//========================SOUNDS==========================
-	const ambient = document.getElementById("ambient");
-	const ambient2 = document.getElementById("ambient2");
-	const ambient3 = document.getElementById("ambient3");
-	const over = document.getElementById("over");
-	const levelUp = document.getElementById("levelUp");
-	const lineFill = document.getElementById("lineFill");
+	const ambient = document.getElementById('ambient');
+	const ambient2 = document.getElementById('ambient2');
+	const ambient3 = document.getElementById('ambient3');
+	const over = document.getElementById('over');
+	const levelUp = document.getElementById('levelUp');
+	const lineFill = document.getElementById('lineFill');
 
 	//The tetrominos
 	const lTetromino = [
@@ -95,8 +95,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	//draw
 	function draw() {
-		current.forEach((index) => {
-			squares[currentPosition + index].classList.add("tetromino");
+		current.forEach(index => {
+			squares[currentPosition + index].classList.add('tetromino');
 			squares[currentPosition + index].style.backgroundColor = colors[random];
 		});
 	}
@@ -105,9 +105,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	//undraw
 	function undraw() {
-		current.forEach((index) => {
-			squares[currentPosition + index].classList.remove("tetromino");
-			squares[currentPosition + index].style.backgroundColor = "";
+		current.forEach(index => {
+			squares[currentPosition + index].classList.remove('tetromino');
+			squares[currentPosition + index].style.backgroundColor = '';
 		});
 	}
 
@@ -122,12 +122,12 @@ document.addEventListener("DOMContentLoaded", () => {
 	//freeze
 	function freeze() {
 		if (
-			current.some((index) =>
-				squares[currentPosition + index + width].classList.contains("taken")
+			current.some(index =>
+				squares[currentPosition + index + width].classList.contains('taken'),
 			)
 		) {
-			current.forEach((index) =>
-				squares[currentPosition + index].classList.add("taken")
+			current.forEach(index =>
+				squares[currentPosition + index].classList.add('taken'),
 			);
 			//anther tetromino falling
 			random = nextRandom;
@@ -142,9 +142,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 
 	//assign functions to keyCodes
-	document.addEventListener("keyup", control);
-	document.addEventListener("click", control);
-	document.addEventListener("keydown", quickDown);
+	document.addEventListener('keyup', control);
+	document.addEventListener('click', control);
+	document.addEventListener('keydown', quickDown);
 
 	function control(e) {
 		tap.play();
@@ -169,14 +169,14 @@ document.addEventListener("DOMContentLoaded", () => {
 	function moveLeft() {
 		undraw();
 		const isAtLeftEdge = current.some(
-			(index) => (currentPosition + index) % width === 0
+			index => (currentPosition + index) % width === 0,
 		);
 		if (!isAtLeftEdge) {
 			currentPosition -= 1;
 		}
 		if (
-			current.some((index) =>
-				squares[currentPosition + index].classList.contains("taken")
+			current.some(index =>
+				squares[currentPosition + index].classList.contains('taken'),
 			)
 		) {
 			currentPosition += 1;
@@ -188,14 +188,14 @@ document.addEventListener("DOMContentLoaded", () => {
 	function moveRight() {
 		undraw();
 		const isAtRightEdge = current.some(
-			(index) => (currentPosition + index) % width === width - 1
+			index => (currentPosition + index) % width === width - 1,
 		);
 		if (!isAtRightEdge) {
 			currentPosition += 1;
 		}
 		if (
-			current.some((index) =>
-				squares[currentPosition + index].classList.contains("taken")
+			current.some(index =>
+				squares[currentPosition + index].classList.contains('taken'),
 			)
 		) {
 			currentPosition -= 1;
@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 
 	//show next
-	const displaySquares = document.querySelectorAll(".mini-grid div");
+	const displaySquares = document.querySelectorAll('.mini-grid div');
 	const displayWidth = 4;
 	const displayIndex = 0;
 
@@ -230,12 +230,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	//display next
 	function displayShape() {
-		displaySquares.forEach((square) => {
-			square.classList.remove("tetromino");
-			square.style.backgroundColor = "";
+		displaySquares.forEach(square => {
+			square.classList.remove('tetromino');
+			square.style.backgroundColor = '';
 		});
-		upNextTetrominoes[nextRandom].forEach((index) => {
-			displaySquares[displayIndex + index].classList.add("tetromino");
+		upNextTetrominoes[nextRandom].forEach(index => {
+			displaySquares[displayIndex + index].classList.add('tetromino');
 			displaySquares[displayIndex + index].style.backgroundColor =
 				colors[nextRandom];
 		});
@@ -246,12 +246,14 @@ document.addEventListener("DOMContentLoaded", () => {
 	let ambIdx = 0;
 
 	//next music
-	nextMusic.addEventListener("click", () => {
+	nextMusic.addEventListener('click', () => {
 		ambientMusic[ambIdx].muted = true;
 		ambIdx = ambIdx + 1;
+		if (ambIdx === ambientMusic.length) {
+			ambIdx = 0;
+		}
+		ambientMusic[ambIdx].muted = false;
 		ambientMusic[ambIdx].play();
-
-		console.log("ambIdx", ambIdx);
 	});
 
 	//add score
@@ -270,7 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				i + 9,
 			];
 
-			if (row.every((index) => squares[index].classList.contains("taken"))) {
+			if (row.every(index => squares[index].classList.contains('taken'))) {
 				score += 10;
 				scoreDisplay.innerHTML = score;
 
@@ -337,15 +339,15 @@ document.addEventListener("DOMContentLoaded", () => {
 				}
 				//=====================LEVELS END=================================
 
-				row.forEach((index) => {
-					squares[index].classList.remove("taken");
-					squares[index].classList.remove("tetromino");
-					squares[index].style.backgroundColor = "";
+				row.forEach(index => {
+					squares[index].classList.remove('taken');
+					squares[index].classList.remove('tetromino');
+					squares[index].style.backgroundColor = '';
 				});
 				const squaresRemoved = squares.splice(i, width);
 
 				squares = squaresRemoved.concat(squares);
-				squares.forEach((cell) => grid.appendChild(cell));
+				squares.forEach(cell => grid.appendChild(cell));
 			}
 		}
 	}
@@ -354,63 +356,63 @@ document.addEventListener("DOMContentLoaded", () => {
 	let color = 0;
 	setInterval(() => {
 		color = color + (1 % 360);
-		gameOverDisplay.style.color = "hsl(" + color + ", 100%, 50%)";
+		gameOverDisplay.style.color = 'hsl(' + color + ', 100%, 50%)';
 	}, 50);
 
 	//Game over
 	function gameOver() {
 		if (
-			current.some((index) =>
-				squares[currentPosition + index].classList.contains("taken")
+			current.some(index =>
+				squares[currentPosition + index].classList.contains('taken'),
 			)
 		) {
-			gameOverDisplay.innerHTML = "GAME OVER";
+			gameOverDisplay.innerHTML = 'GAME OVER';
 			clearInterval(timerId);
 			ambientMusic[ambIdx].pause();
 			over.play();
 
 			//HI SCORE
-			localStorage.getItem("score") > score
-				? localStorage.setItem("score", localStorage.getItem("score"))
-				: localStorage.setItem("score", score);
+			localStorage.getItem('score') > score
+				? localStorage.setItem('score', localStorage.getItem('score'))
+				: localStorage.setItem('score', score);
 		}
 		setTimeout(() => {
 			over.pause();
 		}, 10000);
 	}
-	hiScoreLine.innerHTML = localStorage.getItem("score");
+	hiScoreLine.innerHTML = localStorage.getItem('score');
 
 	//start/pause
-	startBtn.addEventListener("click", () => {
+	startBtn.addEventListener('click', () => {
 		if (timerId) {
 			clearInterval(timerId);
 			timerId = null;
-			gameOverDisplay.innerHTML = "GAME PAUSED";
+			gameOverDisplay.innerHTML = 'GAME PAUSED';
 			ambientMusic[ambIdx].pause();
 		} else {
 			draw();
 			timerId = setInterval(moveDown, 1000);
 			nextRandom = Math.floor(Math.random() * theTetrominoes.length);
 			displayShape();
-			gameOverDisplay.innerHTML = "GAME STARTED";
+			gameOverDisplay.innerHTML = 'GAME STARTED';
 			ambientMusic[ambIdx].play();
 		}
 	});
 
-	startAgain.addEventListener("click", () => {
+	startAgain.addEventListener('click', () => {
 		window.location.reload();
 	});
 
 	//mute
-	mute.addEventListener("click", () => {
+	mute.addEventListener('click', () => {
 		if (!levelUp.muted) {
 			levelUp.muted = true;
 			lineFill.muted = true;
 			tap.muted = true;
 			ambientMusic[ambIdx].muted = true;
 
-			mute.textContent = "Muted";
-			mute.style.textDecoration = "line-through";
+			mute.textContent = 'Muted';
+			mute.style.textDecoration = 'line-through';
 			mainContainer.style.backgroundImage = 'url("./images/bg.jpg")';
 		} else {
 			levelUp.muted = false;
@@ -418,8 +420,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			tap.muted = false;
 			ambientMusic[ambIdx].muted = false;
 
-			mute.textContent = "Mute";
-			mute.style.textDecoration = "none";
+			mute.textContent = 'Mute';
+			mute.style.textDecoration = 'none';
 			mainContainer.style.backgroundImage = 'url("./images/bg.png")';
 		}
 	});
