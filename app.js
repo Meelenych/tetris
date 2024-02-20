@@ -146,15 +146,38 @@ document.addEventListener('DOMContentLoaded', () => {
 	document.addEventListener('click', control);
 	document.addEventListener('keydown', quickDown);
 
+	// Touch event listeners for swipe gestures
+	document.body.addEventListener('swipeleft', control);
+	document.body.addEventListener('swiperight', control);
+	document.body.addEventListener('swipeup', control);
+	document.body.addEventListener('swipedown', control);
+
 	function control(e) {
 		tap.play();
-		if (e.keyCode === 37 || e.target === leftBtn) {
+
+		if (
+			e.keyCode === 37 || // Left arrow key
+			(e.target === leftBtn && e.type === 'click') ||
+			(e.type === 'swipeleft' && e.target === document.body)
+		) {
 			moveLeft();
-		} else if (e.keyCode === 38 || e.target === rotateBtn) {
+		} else if (
+			e.keyCode === 38 || // Up arrow key
+			(e.target === rotateBtn && e.type === 'click') ||
+			(e.type === 'swipeup' && e.target === document.body)
+		) {
 			rotate();
-		} else if (e.keyCode === 39 || e.target === rightBtn) {
+		} else if (
+			e.keyCode === 39 || // Right arrow key
+			(e.target === rightBtn && e.type === 'click') ||
+			(e.type === 'swiperight' && e.target === document.body)
+		) {
 			moveRight();
-		} else if (e.keyCode === 40 || e.target === downBtn) {
+		} else if (
+			e.keyCode === 40 || // Down arrow key
+			(e.target === downBtn && e.type === 'click') ||
+			(e.type === 'swipedown' && e.target === document.body)
+		) {
 			moveDown();
 		}
 	}
