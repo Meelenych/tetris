@@ -141,68 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
-	document.addEventListener('DOMContentLoaded', () => {
-		// Initialize Hammer on the body or the desired container
-		const hammer = new Hammer(document.body);
-
-		document.body.addEventListener('swipe', e => {
-			// Detect the swipe direction from the `e.direction` property
-			switch (e.direction) {
-				case Hammer.DIRECTION_LEFT:
-					moveLeft();
-					break;
-				case Hammer.DIRECTION_RIGHT:
-					moveRight();
-					break;
-				case Hammer.DIRECTION_UP:
-					rotate();
-					break;
-				case Hammer.DIRECTION_DOWN:
-					moveDown();
-					break;
-				default:
-					break;
-			}
-		});
-	});
-
-	//assign functions to keyCodes
-	document.addEventListener('keyup', control);
-	document.addEventListener('click', control);
-	document.addEventListener('keydown', quickDown);
-
-	// Touch event listeners for swipe gestures
-	document.body.addEventListener('swipeleft', control);
-	document.body.addEventListener('swiperight', control);
-	document.body.addEventListener('swipeup', control);
-	document.body.addEventListener('swipedown', control);
-
-	function control(e) {
-		tap.play();
-
-		if (
-			e.keyCode === 37 || // Left arrow key
-			(e.target === leftBtn && e.type === 'click')
-		) {
-			moveLeft();
-		} else if (
-			e.keyCode === 38 || // Up arrow key
-			(e.target === rotateBtn && e.type === 'click')
-		) {
-			rotate();
-		} else if (
-			e.keyCode === 39 || // Right arrow key
-			(e.target === rightBtn && e.type === 'click')
-		) {
-			moveRight();
-		} else if (
-			e.keyCode === 40 || // Down arrow key
-			(e.target === downBtn && e.type === 'click')
-		) {
-			moveDown();
-		}
-	}
-
 	function quickDown(e) {
 		if (e.keyCode === 40 || e.target === downBtn) {
 			moveDown();
@@ -256,6 +194,37 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 		current = theTetrominoes[random][currentRotation];
 		draw();
+	}
+
+	//assign functions to keyCodes
+	document.addEventListener('keyup', control);
+	document.addEventListener('click', control);
+	document.addEventListener('keydown', quickDown);
+
+	function control(e) {
+		tap.play();
+
+		if (
+			e.keyCode === 37 || // Left arrow key
+			(e.target === leftBtn && e.type === 'click')
+		) {
+			moveLeft();
+		} else if (
+			e.keyCode === 38 || // Up arrow key
+			(e.target === rotateBtn && e.type === 'click')
+		) {
+			rotate();
+		} else if (
+			e.keyCode === 39 || // Right arrow key
+			(e.target === rightBtn && e.type === 'click')
+		) {
+			moveRight();
+		} else if (
+			e.keyCode === 40 || // Down arrow key
+			(e.target === downBtn && e.type === 'click')
+		) {
+			moveDown();
+		}
 	}
 
 	//show next

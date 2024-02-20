@@ -2,8 +2,6 @@
 <html lang="en">
 
 <head>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
-
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -11,8 +9,7 @@
   <link
     href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic"
     rel="stylesheet" />
-  <title>Tetris</title>
-
+  <title>WoW Tetris</title>
 </head>
 
 <body>
@@ -20,20 +17,15 @@
     <h1>Karazhan tetris</h1>
     <h2 id="gameOver">INSERT COIN!</h2>
     <div class="displays">
-      <div class="scoreLvlDsp">
-        <h3>SCORE: <span id="score">0</span></h3>
-        <h3>LEVEL: <span id="levelDisplay">0</span></h3>
-      </div>
-      <div class="scoreTable">
-        <h3>HI SCORE</h3>
-        <p id="hiScoreLine">000</p>
-      </div>
+      <p>SCORE: <span id="score">0</span></p>
+      <p>LEVEL: <span id="levelDisplay">0</span></p>
+      <p>HI SCORE: <span id="hiScoreLine">000</span></p>
     </div>
-    <div class="startPauseBtns">
-      <button id="start">Start/Pause</button>
-      <button id="startAgain">New Game</button>
-      <button id="mute">Mute</button>
-      <button id="nextMusic">Music</button>
+    <div class="gameCtrlBtns">
+      <button id="start" class="gameCtrlBtn">Start/Pause</button>
+      <button id="startAgain" class="gameCtrlBtn">New Game</button>
+      <button id="mute" class="gameCtrlBtn">Mute</button>
+      <button id="nextMusic" class="gameCtrlBtn">Music</button>
     </div>
     <div class="container">
       <div class="grid">
@@ -272,33 +264,13 @@
     </div>
 
     <div class="touchControls">
-      <button type="button" id="leftBtn">
-        <div class="touchControlArrow">
-          <svg width="20px" height="20px">
-            <use href="./svg/icons.svg#left" />
-          </svg>
-        </div>
+      <button type="button" id="leftBtn" class="touchBtn">
       </button>
-      <button type="button" id="rotateBtn">
-        <div class="touchControlArrow">
-          <svg width="22px" height="22px">
-            <use href="./svg/icons.svg#rotate" x="-2" y="-2" />
-          </svg>
-        </div>
+      <button type="button" id="rotateBtn" class="touchBtn">
       </button>
-      <button type="button" id="downBtn">
-        <div class="touchControlArrow">
-          <svg width="20px" height="20px">
-            <use href="./svg/icons.svg#down" />
-          </svg>
-        </div>
+      <button type="button" id="downBtn" class="touchBtn">
       </button>
-      <button type="button" id="rightBtn">
-        <div class="touchControlArrow">
-          <svg width="20px" height="20px">
-            <use href="./svg/icons.svg#right" />
-          </svg>
-        </div>
+      <button type="button" id="rightBtn" class="touchBtn">
       </button>
     </div>
 
