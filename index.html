@@ -1,293 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
 
-		<meta name="viewport" content="width=device-width, user-scalable=no" />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
 
-		<link rel="stylesheet" href="./css/style.css" />
-		<link
-			href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic"
-			rel="stylesheet"
-		/>
-		<title>Tetris</title>
-	</head>
-	<body>
-		<div class="mainContainer">
-			<h1>Karazhan tetris</h1>
-			<h2 id="gameOver">INSERT COIN!</h2>
-			<div class="displays">
-				<div class="scoreLvlDsp">
-					<h3>SCORE: <span id="score">0</span></h3>
-					<h3>LEVEL: <span id="levelDisplay">0</span></h3>
-				</div>
-				<div class="scoreTable">
-					<h3>HI SCORE</h3>
-					<p id="hiScoreLine">000</p>
-				</div>
-			</div>
-			<div class="startPauseBtns">
-				<button id="start">Start/Pause</button>
-				<button id="startAgain">New Game</button>
-				<button id="mute">Mute</button>
-				<button id="nextMusic">Music</button>
-			</div>
-			<div class="container">
-				<div class="grid">
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
 
-					<!-- <taken div> -->
-					<div class="taken"></div>
-					<div class="taken"></div>
-					<div class="taken"></div>
-					<div class="taken"></div>
-					<div class="taken"></div>
-					<div class="taken"></div>
-					<div class="taken"></div>
-					<div class="taken"></div>
-					<div class="taken"></div>
-					<div class="taken"></div>
-				</div>
-				<!-- <next div> -->
-				<div class="mini-grid">
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-				</div>
-			</div>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic"
+    rel="stylesheet" />
+  <title>Tetris</title>
+</head>
 
-			<div class="touchControls">
-				<button type="button" id="leftBtn"><</button>
-				<button type="button" id="rotateBtn">o</button>
+<body>
+  <div class="mainContainer">
+    <h1>Karazhan tetris</h1>
+    <h2 id="gameOver">INSERT COIN!</h2>
+    <div class="displays">
+      <div class="scoreLvlDsp">
+        <h3>SCORE: <span id="score">0</span></h3>
+        <h3>LEVEL: <span id="levelDisplay">0</span></h3>
+      </div>
+      <div class="scoreTable">
+        <h3>HI SCORE</h3>
+        <p id="hiScoreLine">000</p>
+      </div>
+    </div>
+    <div class="startPauseBtns">
+      <button id="start">Start/Pause</button>
+      <button id="startAgain">New Game</button>
+      <button id="mute">Mute</button>
+      <button id="nextMusic">Music</button>
+    </div>
+    <div class="container">
+      <div class="grid">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
 
-				<button type="button" id="downBtn">|</button>
-				<button type="button" id="rightBtn">></button>
-			</div>
+        <!-- <taken div> -->
+        <div class="taken"></div>
+        <div class="taken"></div>
+        <div class="taken"></div>
+        <div class="taken"></div>
+        <div class="taken"></div>
+        <div class="taken"></div>
+        <div class="taken"></div>
+        <div class="taken"></div>
+        <div class="taken"></div>
+        <div class="taken"></div>
+      </div>
+      <!-- <next div> -->
+      <div class="mini-grid">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
 
-			<div class="playlist">
-				<audio id="ambient" src="./audio/ambient.wav" loop="true"></audio>
-				<audio id="ambient2" src="./audio/ambient2.wav" loop="true"></audio>
-				<audio id="ambient3" src="./audio/ambient3.wav" loop="true"></audio>
-				<audio id="over" src="./audio/over.wav" loop="false"></audio>
-				<audio id="levelUp" src="./audio/levelUp.wav"></audio>
-				<audio id="lineFill" src="./audio/lineFill.wav"></audio>
-				<audio id="tap" src="./audio/tap.wav"></audio>
-			</div>
-		</div>
-		<script src="./app.js"></script>
-	</body>
+    <div class="touchControls">
+      <button type="button" id="leftBtn">
+        <div class="touchControlArrow">
+          <svg width="20px" heigh="20px">
+            <use href="./svg/icons.svg#left" />
+          </svg>
+        </div>
+      </button>
+      <button type="button" id="rotateBtn">
+        <div class="touchControlArrow"><svg width="22px" heigh="22px">
+            <use href="./svg/icons.svg#rotate" x="-2" y="-2" />
+          </svg></div>
+      </button>
+      <button type="button" id="downBtn">
+        <div class="touchControlArrow"><svg width="20px" heigh="20px">
+            <use href="./svg/icons.svg#down" />
+          </svg></div>
+      </button>
+      <button type="button" id="rightBtn">
+        <div class="touchControlArrow"><svg width="20px" heigh="20px">
+            <use href="./svg/icons.svg#right" />
+          </svg></div>
+      </button>
+    </div>
+
+    <div class="playlist">
+      <audio id="ambient" src="./audio/ambient.wav" loop="true"></audio>
+      <audio id="ambient2" src="./audio/ambient2.wav" loop="true"></audio>
+      <audio id="ambient3" src="./audio/ambient3.wav" loop="true"></audio>
+      <audio id="over" src="./audio/over.wav" loop="false"></audio>
+      <audio id="levelUp" src="./audio/levelUp.wav"></audio>
+      <audio id="lineFill" src="./audio/lineFill.wav"></audio>
+      <audio id="tap" src="./audio/tap.wav"></audio>
+    </div>
+  </div>
+  <script src="./app.js"></script>
+</body>
+
 </html>
