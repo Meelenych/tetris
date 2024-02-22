@@ -201,6 +201,15 @@ document.addEventListener('DOMContentLoaded', () => {
 	document.addEventListener('click', control);
 	document.addEventListener('keydown', quickDown);
 
+	let doubleTouchStartTimestamp = 0;
+	document.addEventListener('touchstart', function (e) {
+		let now = +new Date();
+		if (doubleTouchStartTimestamp + 500 > now) {
+			e.preventDefault();
+		}
+		doubleTouchStartTimestamp = now;
+	});
+
 	function control(e) {
 		tap.play();
 
