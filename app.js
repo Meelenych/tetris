@@ -202,12 +202,17 @@ document.addEventListener('DOMContentLoaded', () => {
 	document.addEventListener('keydown', quickDown);
 
 	let doubleTouchStartTimestamp = 0;
+
 	document.addEventListener('touchstart', function (e) {
 		let now = +new Date();
 		if (doubleTouchStartTimestamp + 500 > now) {
 			e.preventDefault();
 		}
 		doubleTouchStartTimestamp = now;
+	});
+
+	document.addEventListener('touchmove', function (e) {
+		e.preventDefault();
 	});
 
 	function control(e) {
